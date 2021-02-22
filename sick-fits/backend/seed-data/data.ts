@@ -32,9 +32,9 @@ export const products = [
         etag: 'e1fdf84d5126b6ca2e1c8ef9532be5a5',
         placeholder: false,
         url:
-          'http://res.cloudinary.com/wesbos/image/upload/v1576791335/sick-fits-keystone/5dfbed262849d7961377c2c0.jpg',
+          'http://res.cloudinary.com/braaa1/image/upload/v1613772757/sickfits/603037d5b3261926008085df.jpg',
         secure_url:
-          'https://res.cloudinary.com/wesbos/image/upload/v1576791335/sick-fits-keystone/5dfbed262849d7961377c2c0.jpg',
+          'https://res.cloudinary.com/braaa1/image/upload/v1613772757/sickfits/603037d5b3261926008085df.jpg',
         original_filename: 'file',
       },
     },

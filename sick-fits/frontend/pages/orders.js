@@ -1,3 +1,3 @@
-const orders = () => <div>orders</div>;
+import products from './products';
 
-export default orders;
+export default products;
