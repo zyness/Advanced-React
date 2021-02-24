@@ -4,12 +4,6 @@ const useForm = (initial = {}) => {
   // create a state object for our inputs
   const [inputs, setInputs] = useState(initial);
 
-  // {
-  //   name: 'Vasili',
-  //   description: 'nice shoes',
-  //   price: 1000
-  // }
-
   function handleChange(e) {
     let { value, name, type } = e.target;
     if (type === 'number') {
@@ -17,7 +11,7 @@ const useForm = (initial = {}) => {
     }
 
     if (type === 'file') {
-      value[0] = e.target.files;
+      [value] = e.target.files;
     }
     setInputs({
       ...inputs,
