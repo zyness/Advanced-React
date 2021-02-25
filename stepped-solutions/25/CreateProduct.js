@@ -10,7 +10,7 @@ const CREATE_PRODUCT_MUTATION = gql`
     $name: String!
     $description: String!
     $price: Int!
-    $image: Upload
+    # $image: Upload
   ) {
     createProduct(
       data: {
@@ -18,7 +18,7 @@ const CREATE_PRODUCT_MUTATION = gql`
         description: $description
         price: $price
         status: "AVAILABLE"
-        photo: { create: { image: $image, altText: $name } }
+        # photo: { create: { image: $image, altText: $name } }
       }
     ) {
       id
@@ -54,7 +54,7 @@ export default function CreateProduct() {
     >
       <DisplayError error={error} />
       <fieldset disabled={loading} aria-busy={loading}>
-        <label htmlFor="image">
+        {/* <label htmlFor="image">
           Image
           <input
             required
@@ -63,7 +63,7 @@ export default function CreateProduct() {
             name="image"
             onChange={handleChange}
           />
-        </label>
+        </label> */}
         <label htmlFor="name">
           Name
           <input

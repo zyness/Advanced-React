@@ -31,6 +31,7 @@ const { withAuth } = createAuth({
 export default withAuth(
   config({
     server: {
+      port: 3001,
       cors: {
         origin: [process.env.FRONTEND_URL],
         credentials: true,
@@ -53,7 +54,7 @@ export default withAuth(
     ui: {
       // Show the UI only for people who pass this test
       isAccessAllowed: ({ session }) => {
-        console.log(session);
+        // console.log(session);
         return !!session?.data;
       },
     },
