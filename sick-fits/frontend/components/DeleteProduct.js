@@ -23,20 +23,18 @@ const DeleteProduct = ({ id, children }) => {
   });
 
   return (
-    <div>
-      <button
-        type="button"
-        disabled={loading}
-        onClick={() => {
-          if (confirm('Are u sure u wanna delete this item?')) {
-            console.log('delete');
-            deleteProduct().catch((err) => alert(err.message));
-          }
-        }}
-      >
-        {children}
-      </button>
-    </div>
+    <button
+      type="button"
+      disabled={loading}
+      onClick={() => {
+        if (confirm('Are u sure u wanna delete this item?')) {
+          console.log('delete');
+          deleteProduct().catch((err) => alert(err.message));
+        }
+      }}
+    >
+      {children}
+    </button>
   );
 };
 

@@ -15,7 +15,12 @@ const Nav = () => {
           <Link href="/orders">Orders</Link>
           <Link href="/account">Account</Link>
           <SignOut />
-          <MyCart />
+          <MyCart
+            cartCount={user.cart.reduce(
+              (tally, cartItem) => tally + cartItem.quantity,
+              0
+            )}
+          />
         </>
       )}
       {!user && <Link href="/signin">Sign In</Link>}
