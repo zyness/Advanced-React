@@ -3,7 +3,6 @@ import { PAGINATION_QUERY } from '../components/Pagination';
 const paginationField = () => ({
   keyArgs: false, // tells apollo we will take care of everything
   read(existing = [], { args, cache }) {
-    console.log({ existing, args, cache });
     const { skip, first } = args;
     // Read the number of items on the page from cache
     const data = cache.readQuery({ query: PAGINATION_QUERY });
@@ -28,9 +27,6 @@ const paginationField = () => ({
 
     // If there are items, just return from the cache, and we dont need to go to network
     if (items.length) {
-      console.log(
-        `There are ${items.length} items in the cache! Gonna send them to apollo`
-      );
       return items;
     }
 
@@ -46,12 +42,10 @@ const paginationField = () => ({
   merge(existing, incoming, { args }) {
     const { skip, first } = args;
     // This runs if the apollo client comes back from the network with our product
-    console.log(`Merging items from network ${incoming.length}`);
     const merged = existing ? existing.slice(0) : [];
     for (let i = skip; i < skip + incoming.length; ++i) {
       merged[i] = incoming[i - skip];
     }
-    console.log(merged);
     // Finally we return merged items from the cache,
     return merged;
   },

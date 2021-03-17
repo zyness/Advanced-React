@@ -1,7 +1,7 @@
 const formatMoney = (amount = 0) => {
   const options = {
     style: 'currency',
-    currency: 'USD',
+    currency: 'EUR',
     minimumFractionDigits: 2,
   };
 
@@ -9,7 +9,7 @@ const formatMoney = (amount = 0) => {
     options.minimumFractionDigits = 0;
   }
 
-  const formatter = Intl.NumberFormat('en-US', options);
+  const formatter = Intl.NumberFormat('de-DE', options);
 
   return formatter.format(amount / 100);
 };
