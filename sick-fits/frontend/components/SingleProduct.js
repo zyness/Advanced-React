@@ -39,14 +39,13 @@ const SingleProduct = ({ id }) => {
       id,
     },
   });
-
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
   return (
     <ProductStyles>
-      <Head>
+      {/* <Head>
         <title>Sick Fits | {data.Product.name}</title>
-      </Head>
+      </Head> */}
       <div className="details">
         <img
           src={data.Product.photo.image.publicUrlTransformed}

@@ -34,12 +34,14 @@ const Products = ({ page }) => {
       first: perPage,
     },
   });
+  const products = data?.allProducts || [];
+
   if (loading) return <p>Loading ...</p>;
   if (error) return <p>Error: {error.message}</p>;
   return (
     <div>
       <ProductListStyles>
-        {data.allProducts.map((product) => (
+        {products.map((product) => (
           <Product key={product.id} product={product} />
         ))}
       </ProductListStyles>

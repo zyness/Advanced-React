@@ -41,6 +41,15 @@ function createClient({ headers, initialState }) {
             allProducts: paginationField(),
           },
         },
+        Product: {
+          fields: {
+            photo: {
+              merge(existing, incoming) {
+                return incoming;
+              },
+            },
+          },
+        },
       },
     }).restore(initialState || {}),
   });
