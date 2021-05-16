@@ -42,9 +42,9 @@ const Header = () => (
       </LogoStyles>
       <Nav />
     </div>
-    <div className="sub-bar">
+    {/* <div className="sub-bar">
       <Search />
-    </div>
+    </div> */}
     <Cart />
   </HeaderStyles>
 );

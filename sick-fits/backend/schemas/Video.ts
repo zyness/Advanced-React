@@ -1,4 +1,4 @@
-import { relationship, select, text } from '@keystone-next/fields';
+import { relationship, select, text, timestamp } from '@keystone-next/fields';
 import { list } from '@keystone-next/keystone/schema';
 import { cloudinaryImage } from '@keystone-next/cloudinary';
 import { isSignedIn, permissions } from '../access';
@@ -13,7 +13,12 @@ export const Video = list({
   fields: {
     internname: text(),
     name: text(),
-    description: text(),
+    description: text({
+      ui: {
+        displayMode: 'textarea',
+      },
+    }),
+    created: timestamp(),
     rating: text(),
     hoster: relationship({ ref: 'Hoster' }),
     videoId: text(),

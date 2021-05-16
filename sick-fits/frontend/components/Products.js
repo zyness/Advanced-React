@@ -6,16 +6,16 @@ import Product from './Product';
 
 const ALL_PRODUCTS_QUERY = gql`
   query ALL_PRODUCTS_QUERY($skip: Int = 0, $first: Int) {
-    allProducts(first: $first, skip: $skip) {
+    allVideos(first: $first, skip: $skip) {
       id
       name
-      price
       description
-      photo {
-        id
-        image {
-          publicUrlTransformed
-        }
+      videoId
+      status
+      hoster {
+        name
+        link
+        param
       }
     }
   }
@@ -34,7 +34,7 @@ const Products = ({ page }) => {
       first: perPage,
     },
   });
-  const products = data?.allProducts || [];
+  const products = data?.allVideos || [];
 
   if (loading) return <p>Loading ...</p>;
   if (error) return <p>Error: {error.message}</p>;

@@ -23,29 +23,20 @@ const ProductStyles = styled.div`
 
 const SINGLE_PRODUCT_QUERY = gql`
   query SINGLE_PRODUCT_QUERY($id: ID!) {
-    Product(where: { id: $id }) {
-      name
-      price
-      description
+    Video(where: { id: $id }) {
       id
-      photo {
-        altText
-        image {
-          publicUrlTransformed
-        }
+      name
+      description
+      videoId
+      status
+      hoster {
+        name
+        link
+        param
       }
     }
   }
 `;
-const videoSrc = {
-  type: 'video',
-  sources: [
-    {
-      src: 'VcPLNZ6cuIM',
-      provider: 'youtube',
-    },
-  ],
-};
 
 const SingleProduct = ({ id }) => {
   const { data, loading, error } = useQuery(SINGLE_PRODUCT_QUERY, {
@@ -53,8 +44,24 @@ const SingleProduct = ({ id }) => {
       id,
     },
   });
+
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
+  const videoSrc = {
+    type: 'video',
+    sources: [
+      {
+        src: data.Video.videoId,
+        provider: 'youtube',
+      },
+    ],
+  };
+  const text = data.Video.description.split('\n').map((item) => (
+    <span>
+      {item}
+      <br />
+    </span>
+  ));
   return (
     <ProductStyles>
       {/* <Head>
@@ -62,8 +69,8 @@ const SingleProduct = ({ id }) => {
       </Head> */}
       <div className="details">
         <Plyr source={videoSrc} />
-        <h2>{data.Product.name}</h2>
-        <p>{data.Product.description}</p>
+        <h2>{data.Video.name}</h2>
+        <p>{text}</p>
       </div>
     </ProductStyles>
   );
