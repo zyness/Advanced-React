@@ -11,6 +11,9 @@ import { Role } from './schemas/Role';
 import { CartItem } from './schemas/CartItem';
 import { OrderItem } from './schemas/OrderItem';
 import { Order } from './schemas/Order';
+import { Course } from './schemas/Course';
+import { Hoster } from './schemas/Hoster';
+import { Video } from './schemas/Video';
 import { ProductImage } from './schemas/ProductImage';
 import { insertSeedData } from './seed-data';
 import { sendPasswordResetEmail } from './lib/mail';
@@ -67,17 +70,20 @@ export default withAuth(
       OrderItem,
       Order,
       Role,
+      Course,
+      Hoster,
+      Video,
     }),
     extendGraphqlSchema: extendGraphqlSchema,
     ui: {
       // Show the UI only for people who pass this test
       isAccessAllowed: ({ session }) => {
-        // console.log(session);
+        console.log(session?.data.role.name);
         return !!session?.data;
       },
     },
     session: withItemData(statelessSessions(sessionConfig), {
-      User: `id name email role {${permissionsList.join(' ')}}`,
+      User: `id name email role { ${permissionsList.join(' ')}}`,
     }),
   })
 );

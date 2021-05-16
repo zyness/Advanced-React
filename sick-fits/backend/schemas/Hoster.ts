@@ -3,14 +3,7 @@ import { list } from '@keystone-next/keystone/schema';
 import { cloudinaryImage } from '@keystone-next/cloudinary';
 import { isSignedIn, permissions } from '../access';
 
-export const cloudinary = {
-  cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-  apiKey: process.env.CLOUDINARY_KEY,
-  apiSecret: process.env.CLOUDINARY_SECRET,
-  folder: 'sickfits',
-};
-
-export const ProductImage = list({
+export const Hoster = list({
   access: {
     create: isSignedIn,
     read: () => true,
@@ -18,16 +11,14 @@ export const ProductImage = list({
     delete: permissions.canManageProducts,
   },
   fields: {
-    image: cloudinaryImage({
-      cloudinary,
-      label: 'Source',
-    }),
-    altText: text(),
-    product: relationship({ ref: 'Product.photo' }),
+    name: text(),
+    // hoster: relationship({ ref: 'Video.hoster' }),
+    link: text(),
+    param: text(),
   },
   ui: {
     listView: {
-      initialColumns: ['image', 'altText', 'product'],
+      initialColumns: ['name', 'link', 'param'],
     },
   },
 });

@@ -21,40 +21,42 @@ const ProductStyles = styled.div`
   }
 `;
 
-const SINGLE_PRODUCT_QUERY = gql`
-  query SINGLE_PRODUCT_QUERY($id: ID!) {
-    Product(where: { id: $id }) {
+const SINGLE_VIDEO_QUERY = gql`
+  query SINGLE_VIDEO_QUERY($id: ID!) {
+    Video(where: { id: $id }) {
       name
-      price
       description
       id
-      photo {
-        altText
-        image {
-          publicUrlTransformed
-        }
+      rating
+      hoster {
+        name
+        link
+        param
       }
+      videoId
     }
   }
 `;
-const videoSrc = {
-  type: 'video',
-  sources: [
-    {
-      src: 'VcPLNZ6cuIM',
-      provider: 'youtube',
-    },
-  ],
-};
 
-const SingleProduct = ({ id }) => {
-  const { data, loading, error } = useQuery(SINGLE_PRODUCT_QUERY, {
+const SingleVideo = ({ id }) => {
+  const { data, loading, error } = useQuery(SINGLE_VIDEO_QUERY, {
     variables: {
       id,
     },
   });
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
+  console.log(data.Video.hoster.link + data.Video.hoster.param);
+  const videoSrc = {
+    type: 'video',
+    sources: [
+      {
+        src: data.Video.videoId,
+        provider: data.Video.hoster.name.toLowerCase(),
+      },
+    ],
+  };
+
   return (
     <ProductStyles>
       {/* <Head>
@@ -62,11 +64,12 @@ const SingleProduct = ({ id }) => {
       </Head> */}
       <div className="details">
         <Plyr source={videoSrc} />
-        <h2>{data.Product.name}</h2>
-        <p>{data.Product.description}</p>
+        <h2>{data.Video.name}</h2>
+        <p>{data.Video.description}</p>
+        <p>{data.Video.rating}</p>
       </div>
     </ProductStyles>
   );
 };
 
-export default SingleProduct;
+export default SingleVideo;

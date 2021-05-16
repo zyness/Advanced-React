@@ -10,7 +10,10 @@ const GlobalStyles = createGlobalStyle`
     font-weight: normal;
     font-style: normal;
   }
-
+  @font-face {font-family: "Diodrum"; src: url("//db.onlinewebfonts.com/t/f42a40f289fd237da5d2fd13fee2cc1e.eot"); src: url("//db.onlinewebfonts.com/t/f42a40f289fd237da5d2fd13fee2cc1e.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/f42a40f289fd237da5d2fd13fee2cc1e.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/f42a40f289fd237da5d2fd13fee2cc1e.woff") format("woff"), url("//db.onlinewebfonts.com/t/f42a40f289fd237da5d2fd13fee2cc1e.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/f42a40f289fd237da5d2fd13fee2cc1e.svg#Diodrum") format("svg"); }
+  @font-face {font-family: "Museo Cyrl 500"; src: url("//db.onlinewebfonts.com/t/0d14f14ef7089ae17ef0d807d3967ff4.eot"); src: url("//db.onlinewebfonts.com/t/0d14f14ef7089ae17ef0d807d3967ff4.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/0d14f14ef7089ae17ef0d807d3967ff4.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/0d14f14ef7089ae17ef0d807d3967ff4.woff") format("woff"), url("//db.onlinewebfonts.com/t/0d14f14ef7089ae17ef0d807d3967ff4.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/0d14f14ef7089ae17ef0d807d3967ff4.svg#Museo Cyrl 500") format("svg"); }
+  @font-face {font-family: "Boring Sans B Trial"; src: url("//db.onlinewebfonts.com/t/66693b19e3b970ea27f380170e28f9d5.eot"); src: url("//db.onlinewebfonts.com/t/66693b19e3b970ea27f380170e28f9d5.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/66693b19e3b970ea27f380170e28f9d5.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/66693b19e3b970ea27f380170e28f9d5.woff") format("woff"), url("//db.onlinewebfonts.com/t/66693b19e3b970ea27f380170e28f9d5.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/66693b19e3b970ea27f380170e28f9d5.svg#Boring Sans B Trial") format("svg"); }
+  
   html {
     --red: #ff0000;
     --black: #393939;
@@ -28,7 +31,8 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: inherit;
   }
   body{
-    font-family: 'radnika_next', ---apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* font-family: 'radnika_next', ---apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+    font-family: 'Boring Sans B Trial';
     padding: 0;
     margin:0;
     font-size:1.5rem;

@@ -1,9 +1,15 @@
+import Link from 'next/link';
+import {
+  FacebookOutlined,
+  InstagramOutlined,
+  YoutubeOutlined,
+} from '@ant-design/icons';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import { useCart } from '../lib/cartState';
 import formatMoney from '../lib/formatMoney';
 import CartItem from './CartItem';
 import Checkout from './Checkout';
-import CartStyles from './styles/CartStyles';
+import { CartStyles, Separator } from './styles/CartStyles';
 import CloseButton from './styles/CloseButton';
 import Supreme from './styles/Supreme';
 import useUser from './User';
@@ -19,13 +25,24 @@ const Cart = () => {
       </header>
       <CloseButton onClick={closeCart}>&times;</CloseButton>
       <ul>
-        {me.cart.map((cartItem) => (
-          <CartItem key={cartItem.id} cartItem={cartItem} />
-        ))}
+        <Link href="/sell">Meine Kurs</Link>
+        <Link href="/orders">Meine Rechnung</Link>
+        <Link href="/account">Mein Einkaufswagen</Link>
+        <Link href="/account">Konto Einstellungen</Link>
+        <Separator />
+        <Link href="/account">Logout</Link>
       </ul>
       <footer>
-        <p>{formatMoney(calcTotalPrice(me.cart))}</p>
-        <Checkout />
+        <a href="http://facebook.com">
+          <FacebookOutlined style={{ color: '#b2b2b2' }} />
+        </a>
+        <a
+          rel="noreferrer"
+          target="_blank"
+          href="https://www.instagram.com/katharina_fitnesss/"
+        >
+          <InstagramOutlined style={{ color: '#b2b2b2' }} />
+        </a>
       </footer>
     </CartStyles>
   );
